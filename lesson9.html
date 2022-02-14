@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document2</title>
+</head>
+<body>
+    <div id="root">
+        {{total}}</div>
+</body>
+<script>
+  //组件具有可复用性
+  //全局组件不用也依然存在，性能不高
+  const app = Vue.createApp({
+    template: `
+    <div>
+      <counter-parent></counter-parent>
+      <counter/>
+      <counter/>
+      <counter/>     
+      <hello/>
+      <world/>  
+    </div>`       //根组件调用两个子组件，可以降低维护成本
+  });
+
+  const jubuzujian = {
+    data() {
+      return {
+        count: 1
+      }
+    },
+    template: `<div @click="count += 1>{{count}}</div>`
+  }
+
+
+
+  app.component('hello',{
+    template: `<div>hello</div>`
+  })
+
+  app.component('world',{
+    template: `<div>你好</div></div>`
+  })
+
+  app.component('counter',{
+    data() {
+      return {
+        count: 1
+      }
+    },
+    template: `<div @click="count +=1">{{count}}</div>`
+  })
+
+  app.component('counter-parent',{
+    template: `<counter />`
+  })
+
+
+  const vm = app.mount('#root');
+</script>
+</html>
