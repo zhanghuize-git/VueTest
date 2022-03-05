@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document2</title>
+</head>
+<body>
+  <div id="app7">
+    <input type="text"ref="TEXT"/ >
+    <button @click="add">添加</button>
+  </div>
+</body>
+<script>
+ const app7=new Vue({
+  el:"#app7",
+  data:{
+ 
+  },
+  methods:{
+    add:function(){
+      console.log(this.$refs);
+    }
+  }
+})
+</script>
+</html>

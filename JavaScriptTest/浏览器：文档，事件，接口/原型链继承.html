@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+<script>
+  function TrafficLight() {
+    this.color = 1;
+    this.innit();
+    this.addEvent();
+  }
+  TrafficLight.prototype.innit = function() {
+    this.dom = document.createElement('img');
+    this.dom.src = './images/' + this.color + '.jpg'
+    box.appendChild(this.dom);
+  }
+
+  TrafficLight.prototype.addEvent = function() {
+    const self = this;
+    this.dom.onclick = function(){
+      self.changeColor();
+    }
+  }
+
+  TrafficLight.prototype.changeColor = function() {
+    this.color ++;
+    if(this.color == 4) this.color = 1;
+    this.dom.src =  './images/' + this.color + '.jpg'
+  }
+
+  const box = document.getElementById('box');
+
+  let count = 2;
+
+  while(count--) {
+    new TrafficLight()
+  }
+
+
+</script>
+</html>
